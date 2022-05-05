@@ -11,4 +11,8 @@
     <color name="black_charcoal">#333333</color>
     <color name="green_apple">#6CC644</color>
     <color name="red_mahogony">#BD2C00</color>
+
+    <color name="text_heading">@color/black_charcoal</color>
+    <color name="text_sub_heading">@color/gray_granite</color>
+    <color name="text_body">@color/gray_spanish</color>
 </resources>
