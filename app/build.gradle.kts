@@ -74,6 +74,7 @@ dependencies {
     implementation(Libraries.constraintlayout)
     implementation(Libraries.recyclerview)
     implementation(Libraries.material)
+    implementation(Libraries.swiperefreshlayout)
     // ViewModel and LiveData
     implementation(Libraries.viewmodelKtx)
     implementation(Libraries.livedataKtx)
