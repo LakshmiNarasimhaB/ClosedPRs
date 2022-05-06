@@ -26,6 +26,18 @@ android {
             "API_KEY",
             gradleLocalProperties(rootDir).getProperty("GIT_HUB_API_KEY")
         )
+
+        buildConfigField(
+            "String",
+            "OWNER",
+            gradleLocalProperties(rootDir).getProperty("GIT_HUB_OWNER")
+        )
+
+        buildConfigField(
+            "String",
+            "REPOSITORY",
+            gradleLocalProperties(rootDir).getProperty("GIT_HUB_REPOSITORY")
+        )
     }
 
     buildTypes {
