@@ -1,4 +1,4 @@
-package com.sample.repo
+package com.sample.pulls
 
 import org.junit.Test
 
