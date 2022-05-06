@@ -6,6 +6,7 @@ object LibraryVersions {
     const val appcompat = "1.2.0"
     const val constraintlayout = "1.1.3"
     const val recyclerview = "1.1.0"
+    const val swiperefreshlayout = "1.1.0"
     const val material = "1.2.0"
     const val lifecycle = "2.2.0"
     const val arch = "2.1.0"
@@ -46,6 +47,8 @@ object Libraries {
     const val appcompat = "androidx.appcompat:appcompat:${LibraryVersions.appcompat}"
     const val constraintlayout =
         "androidx.constraintlayout:constraintlayout:${LibraryVersions.constraintlayout}"
+    const val swiperefreshlayout =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${LibraryVersions.swiperefreshlayout}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${LibraryVersions.recyclerview}"
     const val material = "com.google.android.material:material:${LibraryVersions.material}"
     const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${LibraryVersions.lifecycle}"
