@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_8"
+    app:cardCornerRadius="@dimen/margin_8"
+    app:cardElevation="@dimen/margin_8">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16">
+
+        <ImageView
+            android:id="@+id/image_status"
+            android:layout_width="@dimen/avatar_width_small"
+            android:layout_height="@dimen/avatar_height_small"
+            android:contentDescription="@string/app_name"
+            android:gravity="center"
+            android:padding="@dimen/margin_4"
+            android:src="@drawable/ic_git_merge"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_pull_title"
+            style="@style/PullRequestTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/image_status"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Add main resources" />
+
+        <TextView
+            android:id="@+id/text_opened_at"
+            style="@style/PullRequestSubTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/text_pull_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_pull_title"
+            tools:text="opened at" />
+
+        <TextView
+            android:id="@+id/text_closed_at"
+            style="@style/PullRequestSubTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/text_pull_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_opened_at"
+            tools:text="closed at" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_8"
+            android:background="@color/gray_70"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_closed_at" />
+
+        <ImageView
+            android:id="@+id/image_author_avatar"
+            android:layout_width="@dimen/avatar_width_small"
+            android:layout_height="@dimen/avatar_height_small"
+            android:layout_marginTop="@dimen/margin_8"
+            android:src="@drawable/ic_splash"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        <TextView
+            android:id="@+id/text_author_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginStart="@dimen/text_16"
+            app:layout_constraintLeft_toRightOf="@id/image_author_avatar"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintBottom_toBottomOf="@id/image_author_avatar"
+            tools:text="Lakshmi Narasimha B merged branch 1 into master" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
