@@ -85,7 +85,6 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
     }
 
     private fun observePullRequestsFetch() {
-//        viewModel.getPullRequestsForState(CLOSED)
         viewModel.pullRequests.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }

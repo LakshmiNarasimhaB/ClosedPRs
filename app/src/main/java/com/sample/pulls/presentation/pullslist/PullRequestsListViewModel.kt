@@ -11,16 +11,13 @@ class PullRequestsListViewModel(
     private val githubRepository: GithubRepository
 ) : ViewModel() {
 
-    companion object {
-        private const val CLOSED = "closed"
-        private const val OPEN = "open"
-        private const val ALL = "all"
-    }
-
-    private val currentState = MutableLiveData(CLOSED)
+    private val currentState = MutableLiveData(PullState.CLOSED.state)
 
     fun getPullRequestsForState(position: Int) {
-        currentState.value = PullState.fromPosition(position)
+        val pullState = PullState.fromPosition(position)
+        if (currentState.value != pullState) {
+            currentState.value = pullState
+        }
     }
 
     val pullRequests = currentState.switchMap { state ->

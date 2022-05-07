@@ -17,11 +17,11 @@ data class PullRequestData(
     @SerializedName("created_at")
     val createdAt: Date,
     @SerializedName("merged_at")
-    val mergedAt: Date,
+    val mergedAt: Date?,
     @SerializedName("closed_at")
-    val closedAt: Date,
+    val closedAt: Date?,
     @SerializedName("merge_commit_sha")
-    val mergeCommitSha: String,
+    val mergeCommitSha: String?,
     val head: BranchData,
     val base: BranchData,
     val user: UserData
@@ -32,9 +32,9 @@ data class PullRequestData(
         title,
         body,
         createdAt,
-        mergedAt,
-        closedAt,
-        mergeCommitSha,
+        mergedAt ?: Date(),
+        mergedAt ?: Date(),
+        mergeCommitSha ?: "",
         head.toDomain(),
         base.toDomain(),
         user.toDomain()

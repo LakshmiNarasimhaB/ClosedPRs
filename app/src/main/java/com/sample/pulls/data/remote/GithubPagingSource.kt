@@ -1,6 +1,5 @@
 package com.sample.pulls.data.remote
 
-import android.util.Log
 import androidx.paging.PagingSource
 import com.sample.pulls.domain.model.PullRequest
 import retrofit2.HttpException
@@ -19,7 +18,6 @@ class GithubPagingSource(
         return try {
             val pullRequests = githubApi.getClosedPullRequests(state, position, params.loadSize)
                 .map {
-                    Log.d("reposne", it.toString())
                     it.toDomain()
                 }
 

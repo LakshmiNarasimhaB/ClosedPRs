@@ -48,7 +48,7 @@ interface GithubApi {
          * Only enable logging when build is of type DEBUG.
          */
         private fun createHttpLoggingInterceptor(): HttpLoggingInterceptor {
-            return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+            return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
         }
     }
 }
