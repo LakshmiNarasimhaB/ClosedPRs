@@ -32,9 +32,9 @@ data class PullRequestData(
         title,
         body,
         createdAt,
-        mergedAt ?: Date(),
-        mergedAt ?: Date(),
-        mergeCommitSha ?: "",
+        mergedAt,
+        mergedAt,
+        mergeCommitSha,
         head.toDomain(),
         base.toDomain(),
         user.toDomain()

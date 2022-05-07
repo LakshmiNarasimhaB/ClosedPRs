@@ -1,6 +1,8 @@
 package com.sample.pulls.presentation.pullslist
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +40,9 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
         setupUi()
         setupPullStateSpinner()
         observePullRequestsFetch()
+        val spannable = SpannableString("one")
+        val spannable2 = SpannableString("one")
+        val spannableBuilder = SpannableStringBuilder().append(spannable).append(spannable2)
     }
 
     override fun onDestroyView() {
@@ -60,6 +65,7 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
     private fun setupUi() {
         adapter = PullRequestListAdapter(this::onItemClicked)
         binding.apply {
+            recyclerView.itemAnimator = null
             recyclerView.adapter = adapter
             recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
                 header = PullRequestLoadStateAdapter { adapter.retry() },

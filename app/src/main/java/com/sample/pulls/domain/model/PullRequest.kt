@@ -14,9 +14,9 @@ data class PullRequest(
     val title: String,
     val body: String,
     val createdAt: Date,
-    val mergedAt: Date,
-    val closedAt: Date,
-    val mergeCommitSha: String,
+    val mergedAt: Date?,
+    val closedAt: Date?,
+    val mergeCommitSha: String?,
     val head: Branch,
     val base: Branch,
     val user: User
