@@ -34,6 +34,7 @@ interface GithubApi {
 
         private fun createOkHttpClient(): OkHttpClient {
             return OkHttpClient.Builder()
+                .addInterceptor(HeaderInterceptor())
                 .addInterceptor(createHttpLoggingInterceptor())
                 .build()
         }
