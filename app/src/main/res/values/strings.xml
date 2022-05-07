@@ -14,9 +14,4 @@
         <item>open</item>
         <item>all</item>
     </string-array>
-
-    <string-array name="pulls_sort_order">
-        <item>ascending</item>
-        <item>descending</item>
-    </string-array>
 </resources>
