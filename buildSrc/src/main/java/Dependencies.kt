@@ -9,6 +9,8 @@ object LibraryVersions {
     const val swiperefreshlayout = "1.1.0"
     const val material = "1.2.0"
     const val lifecycle = "2.2.0"
+    const val navigation = "2.3.0"
+    const val paging = "3.0.0-alpha05"
     const val arch = "2.1.0"
     const val retrofit = "2.9.0"
     const val okhttp = "4.8.1"
@@ -51,12 +53,21 @@ object Libraries {
         "androidx.swiperefreshlayout:swiperefreshlayout:${LibraryVersions.swiperefreshlayout}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${LibraryVersions.recyclerview}"
     const val material = "com.google.android.material:material:${LibraryVersions.material}"
-    const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${LibraryVersions.lifecycle}"
+    const val viewmodelKtx =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${LibraryVersions.lifecycle}"
     const val livedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${LibraryVersions.lifecycle}"
-    const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${LibraryVersions.lifecycle}"
+    const val lifecycleRuntimeKtx =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${LibraryVersions.lifecycle}"
+    const val navigationKtx =
+        "androidx.navigation:navigation-fragment-ktx:${LibraryVersions.navigation}"
+    const val navigationUiKtx =
+        "androidx.navigation:navigation-ui-ktx:${LibraryVersions.navigation}"
+    const val paging = "androidx.paging:paging-runtime:${LibraryVersions.paging}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${LibraryVersions.retrofit}"
-    const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${LibraryVersions.retrofit}"
-    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${LibraryVersions.okhttp}"
+    const val retrofitConverterGson =
+        "com.squareup.retrofit2:converter-gson:${LibraryVersions.retrofit}"
+    const val loggingInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${LibraryVersions.okhttp}"
     const val glide = "com.github.bumptech.glide:glide:${LibraryVersions.glide}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${LibraryVersions.glide}"
 }

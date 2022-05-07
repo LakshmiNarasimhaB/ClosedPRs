@@ -1,6 +1,6 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.sample.pulls.presentation
+package com.sample.pulls.presentation.pullslist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
