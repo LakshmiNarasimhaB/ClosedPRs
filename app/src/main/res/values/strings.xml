@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SampleRepository</string>
+    <string name="item_pull_request_title"></string>
 </resources>

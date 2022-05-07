@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_4">4dp</dimen>
     <dimen name="margin_8">8dp</dimen>
     <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_24">24dp</dimen>
@@ -8,5 +9,9 @@
     <dimen name="text_14">14sp</dimen>
     <dimen name="text_16">16sp</dimen>
     <dimen name="text_18">18sp</dimen>
+    <dimen name="text_20">20sp</dimen>
     <dimen name="text_24">24sp</dimen>
+
+    <dimen name="avatar_height_small">36dp</dimen>
+    <dimen name="avatar_width_small">36dp</dimen>
 </resources>

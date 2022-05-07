@@ -13,4 +13,21 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="PullRequestTitle">
+        <item name="android:textSize">@dimen/text_20</item>
+        <item name="color">@color/black_charcoal</item>
+        <item name="lineHeight">@dimen/text_24</item>
+        <item name="fontFamily">sans-serif-black</item>
+        <item name="android:layout_marginLeft">@dimen/margin_16</item>
+    </style>
+
+    <style name="PullRequestSubTitle">
+        <item name="android:textSize">@dimen/text_14</item>
+        <item name="color">@color/black_charcoal</item>
+        <item name="lineHeight">@dimen/text_16</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:layout_marginTop">@dimen/margin_4</item>
+    </style>
 </resources>
