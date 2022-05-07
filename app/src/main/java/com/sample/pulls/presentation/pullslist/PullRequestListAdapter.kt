@@ -58,22 +58,44 @@ class PullRequestListAdapter(
                     .circleCrop()
                     .error(R.drawable.ic_splash)
                     .into(imageAuthorAvatar)
-
-                if (pullRequest.mergeCommitSha != null) {
-                    textClosedAt.background = ContextCompat.getDrawable(
-                        binding.divider.context,
-                        R.drawable.background_round_green
-                    )
-                }
-
-                if (pullRequest.closedAt != null && pullRequest.mergeCommitSha.isNullOrBlank()){
-                    textClosedAt.background = ContextCompat.getDrawable(
-                        binding.divider.context,
+                var drawableId = R.drawable.background_round_grey
+                var labelText = ""
+                when {
+                    isPullRequestOpen(pullRequest) -> {
+                        drawableId = R.drawable.background_round_green
+                        labelText= "Open"
+                    }
+                    isPullRequestMerged(pullRequest) -> {
+                        R.drawable.background_round_purple
+                        labelText= "Merged"
+                    }
+                    isPullRequestClosed(pullRequest) -> {
                         R.drawable.background_round_red
-                    )
+                        labelText= "Closed"
+                    }
+                    else -> {
+                        R.drawable.background_round_grey
+                        labelText = ""
+                    }
                 }
+                textClosedAt.text = labelText
+                textClosedAt.background = ContextCompat.getDrawable(
+                    binding.divider.context, drawableId
+                )
             }
         }
+    }
+
+    private fun isPullRequestClosed(pullRequest: PullRequest): Boolean {
+        return pullRequest.closedAt != null && pullRequest.mergedAt == null
+    }
+
+    private fun isPullRequestOpen(pullRequest: PullRequest): Boolean {
+        return pullRequest.closedAt == null && pullRequest.mergedAt == null
+    }
+
+    private fun isPullRequestMerged(pullRequest: PullRequest): Boolean {
+        return pullRequest.closedAt != null && pullRequest.mergedAt != null
     }
 }
 
