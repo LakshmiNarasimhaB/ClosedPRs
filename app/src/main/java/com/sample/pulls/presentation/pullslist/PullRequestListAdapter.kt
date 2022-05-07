@@ -59,14 +59,14 @@ class PullRequestListAdapter(
                     .error(R.drawable.ic_splash)
                     .into(imageAuthorAvatar)
 
-                if (pullRequest.mergeCommitSha != null) {
+                if (pullRequest.mergedAt != null) {
                     textClosedAt.background = ContextCompat.getDrawable(
                         binding.divider.context,
                         R.drawable.background_round_green
                     )
                 }
 
-                if (pullRequest.closedAt != null && pullRequest.mergeCommitSha.isNullOrBlank()){
+                if (pullRequest.mergedAt == null ){
                     textClosedAt.background = ContextCompat.getDrawable(
                         binding.divider.context,
                         R.drawable.background_round_red
@@ -88,3 +88,4 @@ private val diffUtil = object : DiffUtil.ItemCallback<PullRequest>() {
     override fun areContentsTheSame(oldItem: PullRequest, newItem: PullRequest) =
         oldItem == newItem
 }
+
