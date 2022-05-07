@@ -12,7 +12,7 @@ class HeaderInterceptor : Interceptor {
         proceed(
             request()
                 .newBuilder()
-                .addHeader("Authorization: token", BuildConfig.API_KEY)
+                .addHeader("Authorization:token", BuildConfig.API_KEY)
                 .build()
         )
     }

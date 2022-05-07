@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">SampleRepository</string>
-    <string name="item_pull_request_title"></string>
+    <string name="item_pull_request_closed_at">Closed at: </string>
+    <string name="item_pull_request_opened_at">Opened at: </string>
+    <string name="error_loading_results">Error loading results!</string>
+    <string name="retry">Retry</string>
+    <string name="author_merged_from_branch_to_branch">%1$s merged into %2$s from %3$s</string>
+
+    <string-array name="pulls_state_array">
+        <item>closed</item>
+        <item>open</item>
+        <item>all</item>
+    </string-array>
+
+    <string-array name="pulls_sort_order">
+        <item>ascending</item>
+        <item>descending</item>
+    </string-array>
 </resources>

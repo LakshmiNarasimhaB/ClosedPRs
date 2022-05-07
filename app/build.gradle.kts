@@ -92,6 +92,13 @@ dependencies {
     implementation(Libraries.livedataKtx)
     implementation(Libraries.lifecycleRuntimeKtx)
 
+    // Navigation
+    implementation(Libraries.navigationKtx)
+    implementation(Libraries.navigationUiKtx)
+
+    //Paging
+    implementation(Libraries.paging)
+
     // Retrofit
     implementation(Libraries.retrofit)
     implementation(Libraries.retrofitConverterGson)

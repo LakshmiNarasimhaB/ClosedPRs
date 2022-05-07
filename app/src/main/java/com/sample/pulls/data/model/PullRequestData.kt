@@ -1,5 +1,6 @@
 package com.sample.pulls.data.model
 
+import com.google.gson.annotations.SerializedName
 import com.sample.pulls.domain.model.Branch
 import com.sample.pulls.domain.model.PullRequest
 import com.sample.pulls.domain.model.User
@@ -13,9 +14,13 @@ data class PullRequestData(
     val number: String,
     val title: String,
     val body: String,
+    @SerializedName("created_at")
     val createdAt: Date,
+    @SerializedName("merged_at")
     val mergedAt: Date,
+    @SerializedName("closed_at")
     val closedAt: Date,
+    @SerializedName("merge_commit_sha")
     val mergeCommitSha: String,
     val head: BranchData,
     val base: BranchData,
@@ -51,7 +56,8 @@ data class BranchData(
  */
 data class UserData(
     val login: String,
-    val avatarUrl: String
+    @SerializedName("avatar_url")
+    val avatarUrl: String?
 ) {
-    fun toDomain() = User(login, avatarUrl)
+    fun toDomain() = User(login, if (avatarUrl.isNullOrBlank()) "" else avatarUrl)
 }

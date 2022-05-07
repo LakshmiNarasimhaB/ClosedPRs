@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pullRequestListFragment">
+
+    <fragment
+        android:id="@+id/pullRequestListFragment"
+        android:name="com.sample.pulls.presentation.pullslist.PullRequestListFragment"
+        android:label="fragment_pull_request_list"
+        tools:layout="@layout/fragment_pull_request_list" />
+</navigation>

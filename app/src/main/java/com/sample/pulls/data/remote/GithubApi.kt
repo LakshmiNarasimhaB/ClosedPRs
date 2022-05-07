@@ -8,6 +8,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.Query
 
 /**
@@ -16,8 +18,11 @@ import retrofit2.http.Query
 interface GithubApi {
 
     @GET("repos/${OWNER}/${REPO}/pulls")
+    @Headers("Authorization: token ${BuildConfig.API_KEY}")
     suspend fun getClosedPullRequests(
-        @Query("state") state: String = CLOSED
+        @Query("state") state: String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
     ): List<PullRequestData>
 
     companion object {
@@ -34,7 +39,6 @@ interface GithubApi {
 
         private fun createOkHttpClient(): OkHttpClient {
             return OkHttpClient.Builder()
-                .addInterceptor(HeaderInterceptor())
                 .addInterceptor(createHttpLoggingInterceptor())
                 .build()
         }
@@ -44,14 +48,7 @@ interface GithubApi {
          * Only enable logging when build is of type DEBUG.
          */
         private fun createHttpLoggingInterceptor(): HttpLoggingInterceptor {
-            return HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
-                .apply {
-                    if (BuildConfig.DEBUG) {
-                        HttpLoggingInterceptor.Level.BODY
-                    } else {
-                        HttpLoggingInterceptor.Level.NONE
-                    }
-                }
+            return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         }
     }
 }

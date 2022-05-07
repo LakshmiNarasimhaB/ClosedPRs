@@ -1,11 +1,14 @@
 package com.sample.pulls.domain.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 /**
  * Domain model for
  */
-class PullRequest(
+@Parcelize
+data class PullRequest(
     val id: String,
     val number: String,
     val title: String,
@@ -17,20 +20,22 @@ class PullRequest(
     val head: Branch,
     val base: Branch,
     val user: User
-)
+) : Parcelable
 
 /**
  * Branch details to identify Reference and Head branches.
  */
+@Parcelize
 data class Branch(
     val ref: String,
     val sha: String
-)
+) : Parcelable
 
 /**
  * User details.
  */
+@Parcelize
 data class User(
     val login: String,
     val avatarUrl: String
-)
+) : Parcelable
