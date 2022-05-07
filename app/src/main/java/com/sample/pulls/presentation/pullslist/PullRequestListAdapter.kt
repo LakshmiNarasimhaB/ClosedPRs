@@ -88,3 +88,4 @@ private val diffUtil = object : DiffUtil.ItemCallback<PullRequest>() {
     override fun areContentsTheSame(oldItem: PullRequest, newItem: PullRequest) =
         oldItem == newItem
 }
+
