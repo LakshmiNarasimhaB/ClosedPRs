@@ -17,9 +17,8 @@ import com.sample.pulls.utils.getDateWithDay
 /**
  * Paging adapter to take care of Pull request recycler view.
  */
-class PullRequestListAdapter(
-    private val onItemClicked: (PullRequest) -> Unit
-) : PagingDataAdapter<PullRequest, PullRequestListAdapter.PullRequestViewHolder>(comparator) {
+class PullRequestListAdapter :
+    PagingDataAdapter<PullRequest, PullRequestListAdapter.PullRequestViewHolder>(comparator) {
 
     /**
      * Constants to identify PR state.
@@ -46,17 +45,6 @@ class PullRequestListAdapter(
     inner class PullRequestViewHolder(
         private val binding: ItemPullRequestBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.root.setOnClickListener {
-                val position = bindingAdapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    val item = getItem(position)
-                    if (item != null) {
-                        onItemClicked(item)
-                    }
-                }
-            }
-        }
 
         fun bind(pullRequest: PullRequest) {
             binding.apply {
@@ -116,23 +104,31 @@ class PullRequestListAdapter(
         }
     }
 
+    /**
+     * For a closed PR, the State is closed and mergedAt is null.
+     */
     private fun isPullRequestClosed(pullRequest: PullRequest): Boolean {
         return pullRequest.state == CLOSED && pullRequest.mergedAt == null
     }
 
+    /**
+     * For a Open PR, the State is open.
+     */
     private fun isPullRequestOpen(pullRequest: PullRequest): Boolean {
         return pullRequest.state == OPEN
     }
 
+    /**
+     * For a merged PR, the State is closed and mergedAt is non null.
+     */
     private fun isPullRequestMerged(pullRequest: PullRequest): Boolean {
         return pullRequest.state == CLOSED && pullRequest.mergedAt != null
     }
 }
 
-interface OnItemClickListener {
-    fun onItemClick(pullRequest: PullRequest)
-}
-
+/**
+ * Diff util object to differentiate between items.
+ */
 private val comparator = object : DiffUtil.ItemCallback<PullRequest>() {
     override fun areItemsTheSame(oldItem: PullRequest, newItem: PullRequest) =
         oldItem.id == newItem.id

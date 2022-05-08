@@ -50,8 +50,29 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
         _binding = null
     }
 
+    private fun setupUi() {
+        binding.apply {
+            buttonRetry.setOnClickListener { adapter.retry() }
+            retryGroup.setOnClickListener { adapter.retry() }
+        }
+    }
+
     private fun setupRecyclerViewAdapter(){
-        adapter = PullRequestListAdapter(this::onItemClicked)
+        adapter = PullRequestListAdapter()
+        binding.apply {
+            recyclerView.itemAnimator = null
+            recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
+                header = PullRequestLoadStateAdapter { adapter.retry() },
+                footer = PullRequestLoadStateAdapter { adapter.retry() }
+            )
+        }
+        addLoadStateListenerToRecyclerView()
+    }
+
+    /**
+     * Load state listener to adapter. Show/Hide progressbar and retry buttons based on state.
+     */
+    private fun addLoadStateListenerToRecyclerView() {
         adapter.addLoadStateListener { loadState ->
             binding.apply {
                 progressBar.isVisible = loadState.source.refresh is LoadState.Loading
@@ -84,19 +105,9 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
         binding.spinnerPullState.setSelection(0)
     }
 
-    private fun setupUi() {
-        binding.apply {
-            recyclerView.itemAnimator = null
-            recyclerView.adapter = adapter
-            recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
-                header = PullRequestLoadStateAdapter { adapter.retry() },
-                footer = PullRequestLoadStateAdapter { adapter.retry() }
-            )
-            buttonRetry.setOnClickListener { adapter.retry() }
-            retryGroup.setOnClickListener { adapter.retry() }
-        }
-    }
-
+    /**
+     * Observe the changes in the pullRequests Mutable Live Data and update the recycler view.
+     */
     private fun observePullRequestsFetch() {
         viewModel.pullRequests.observe(viewLifecycleOwner) {
             binding.recyclerView.scrollToPosition(0)
@@ -104,10 +115,9 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
         }
     }
 
-    private fun onItemClicked(pullRequest: PullRequest) {
-        // TODO Navigate to Details
-    }
-
+    /**
+     * On Item selected listener to update required state to View Model.
+     */
     private val stateSpinnerItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
             viewModel.getPullRequestsForState(pos)
