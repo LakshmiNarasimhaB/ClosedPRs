@@ -3,7 +3,7 @@ package com.sample.pulls.utils
 import java.text.SimpleDateFormat
 import java.util.*
 
-private const val DATE_FORMAT_INFO = "EEE, dd MMM HH:mm"
+private const val DATE_FORMAT_INFO = "EEE, dd MMM HH:mm a"
 
 /**
  * Gives 22/1/2020 as Wed, 22nd Jan.

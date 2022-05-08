@@ -1,4 +1,4 @@
-package com.sample.pulls
+package com.sample.pulls.di
 
 import com.sample.pulls.data.mappers.PullRequestMapper
 import com.sample.pulls.data.remote.GithubApi
@@ -10,10 +10,11 @@ import com.sample.pulls.presentation.pullslist.viewmodel.PullRequestListViewMode
  * Container class for app dependencies.
  */
 class AppContainer {
+    var pullRequestListContainer: PullRequestListContainer? = null
+    var repository: GithubRepository? = null
 
     init {
-        val repository = createRepository()
-        PullRequestListViewModelFactory.inject(repository)
+        repository = createRepository()
     }
 
     private fun createRepository(): GithubRepository {
