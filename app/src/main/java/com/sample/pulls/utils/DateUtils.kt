@@ -3,7 +3,7 @@ package com.sample.pulls.utils
 import java.text.SimpleDateFormat
 import java.util.*
 
-private const val DATE_FORMAT_LOAN_INFO = "EEE, dd MMM"
+private const val DATE_FORMAT_INFO = "EEE, dd MMM HH:mm"
 
 /**
  * Gives 22/1/2020 as Wed, 22nd Jan.
@@ -15,7 +15,7 @@ fun getDateWithDay(date: Date?): String? {
         null
     } else {
         SimpleDateFormat(
-            DATE_FORMAT_LOAN_INFO,
+            DATE_FORMAT_INFO,
             Locale.getDefault()
         ).format(date)
     }

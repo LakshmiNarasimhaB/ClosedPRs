@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/pullRequestListFragment"
-        android:name="com.sample.pulls.presentation.pullslist.PullRequestListFragment"
-        android:label="fragment_pull_request_list"
+        android:name="com.sample.pulls.presentation.pullslist.view.PullRequestListFragment"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_pull_request_list" />
 </navigation>

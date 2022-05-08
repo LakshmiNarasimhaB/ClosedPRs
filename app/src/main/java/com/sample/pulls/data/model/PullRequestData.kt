@@ -1,9 +1,6 @@
 package com.sample.pulls.data.model
 
 import com.google.gson.annotations.SerializedName
-import com.sample.pulls.domain.model.Branch
-import com.sample.pulls.domain.model.PullRequest
-import com.sample.pulls.domain.model.User
 import java.util.*
 
 /**
@@ -26,22 +23,7 @@ data class PullRequestData(
     val base: BranchData,
     val user: UserData,
     val state: String
-) {
-    fun toDomain() = PullRequest(
-        id,
-        number,
-        title,
-        body,
-        createdAt,
-        mergedAt,
-        closedAt,
-        mergeCommitSha,
-        head.toDomain(),
-        base.toDomain(),
-        user.toDomain(),
-        state
-    )
-}
+)
 
 /**
  * Branch details to identify Reference and Head branches.
@@ -49,9 +31,7 @@ data class PullRequestData(
 data class BranchData(
     val ref: String,
     val sha: String
-) {
-    fun toDomain() = Branch(ref, sha)
-}
+)
 
 /**
  * User details.
@@ -60,6 +40,4 @@ data class UserData(
     val login: String,
     @SerializedName("avatar_url")
     val avatarUrl: String?
-) {
-    fun toDomain() = User(login, if (avatarUrl.isNullOrBlank()) "" else avatarUrl)
-}
+)

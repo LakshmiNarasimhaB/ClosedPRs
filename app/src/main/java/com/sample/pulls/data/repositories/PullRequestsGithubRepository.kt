@@ -9,13 +9,12 @@ import com.sample.pulls.data.mappers.PullRequestMapper
 import com.sample.pulls.data.remote.GithubApi
 import com.sample.pulls.data.remote.GithubPagingSource
 import com.sample.pulls.domain.model.PullRequest
-import com.sample.pulls.utils.DefaultDispatchersProvider
+import com.sample.pulls.domain.repositories.GithubRepository
 
 /**
  * Github Repository implementation.
  */
 class PullRequestsGithubRepository(
-    private val dispatchersProvider: DefaultDispatchersProvider,
     private val pullRequestMapper: PullRequestMapper,
     private val githubApi: GithubApi
 ) : GithubRepository {
@@ -27,7 +26,7 @@ class PullRequestsGithubRepository(
                 maxSize = 100,
                 enablePlaceholders = true
             ),
-            pagingSourceFactory = { GithubPagingSource(githubApi, state) }
+            pagingSourceFactory = { GithubPagingSource(githubApi, state, pullRequestMapper) }
         ).liveData
     }
 }

@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 /**
- * Domain model for
+ * Domain model for [PullRequestData]
  */
 @Parcelize
 data class PullRequest(

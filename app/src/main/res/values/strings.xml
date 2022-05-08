@@ -4,7 +4,6 @@
     <string name="item_pull_request_opened_at">Opened</string>
     <string name="error_loading_results">Error loading results!</string>
     <string name="retry">Retry</string>
-    <string name="author_merged_from_branch_to_branch">%1$s merged into %2$s from %3$s</string>
     <string name="label_author">Author</string>
     <string name="label_base_branch">Base</string>
     <string name="label_head_branch">Head</string>
@@ -14,10 +13,5 @@
         <item>closed</item>
         <item>open</item>
         <item>all</item>
-    </string-array>
-
-    <string-array name="pulls_sort_order">
-        <item>ascending</item>
-        <item>descending</item>
     </string-array>
 </resources>

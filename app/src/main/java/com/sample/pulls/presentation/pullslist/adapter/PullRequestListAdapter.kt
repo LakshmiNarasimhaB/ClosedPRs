@@ -1,4 +1,4 @@
-package com.sample.pulls.presentation.pullslist
+package com.sample.pulls.presentation.pullslist.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +12,22 @@ import com.bumptech.glide.Glide
 import com.sample.pulls.R
 import com.sample.pulls.databinding.ItemPullRequestBinding
 import com.sample.pulls.domain.model.PullRequest
-import com.sample.pulls.presentation.model.PullState
 import com.sample.pulls.utils.getDateWithDay
 
+/**
+ * Paging adapter to take care of Pull request recycler view.
+ */
 class PullRequestListAdapter(
     private val onItemClicked: (PullRequest) -> Unit
 ) : PagingDataAdapter<PullRequest, PullRequestListAdapter.PullRequestViewHolder>(comparator) {
+
+    /**
+     * Constants to identify PR state.
+     */
+    companion object {
+        const val CLOSED = "closed"
+        const val OPEN = "open"
+    }
 
     override fun onBindViewHolder(holder: PullRequestViewHolder, position: Int) {
         val currentItem = getItem(position)
@@ -81,7 +91,7 @@ class PullRequestListAdapter(
                         imageDrawableId = R.drawable.ic_git_closed
                     }
                     else -> {
-                       // Do nothing
+                        // Do nothing
                     }
                 }
                 imageStatus.setImageResource(imageDrawableId)
@@ -107,15 +117,15 @@ class PullRequestListAdapter(
     }
 
     private fun isPullRequestClosed(pullRequest: PullRequest): Boolean {
-        return pullRequest.state == PullState.CLOSED.state && pullRequest.mergedAt == null
+        return pullRequest.state == CLOSED && pullRequest.mergedAt == null
     }
 
     private fun isPullRequestOpen(pullRequest: PullRequest): Boolean {
-        return pullRequest.state == PullState.OPEN.state
+        return pullRequest.state == OPEN
     }
 
     private fun isPullRequestMerged(pullRequest: PullRequest): Boolean {
-        return pullRequest.state == PullState.CLOSED.state && pullRequest.mergedAt != null
+        return pullRequest.state == CLOSED && pullRequest.mergedAt != null
     }
 }
 

@@ -1,10 +1,8 @@
-package com.sample.pulls.data.repositories
+package com.sample.pulls.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
-import com.sample.pulls.data.model.Response
 import com.sample.pulls.domain.model.PullRequest
-import kotlinx.coroutines.flow.Flow
 
 /**
  * Repository class.
