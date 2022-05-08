@@ -1,4 +1,4 @@
-package com.sample.pulls.presentation.pullslist
+package com.sample.pulls.presentation.pullslist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +8,9 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sample.pulls.databinding.ItemLoadStateFooterBinding
 
+/**
+ * Load State Adapter to show progress when fetching is going on error when the call returns with exception.
+ */
 class PullRequestLoadStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<PullRequestLoadStateAdapter.LoadStateViewHolder>() {
 

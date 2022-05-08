@@ -1,8 +1,6 @@
-package com.sample.pulls.presentation.pullslist
+package com.sample.pulls.presentation.pullslist.view
 
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +13,10 @@ import androidx.paging.LoadState
 import com.sample.pulls.R
 import com.sample.pulls.databinding.FragmentPullRequestListBinding
 import com.sample.pulls.domain.model.PullRequest
+import com.sample.pulls.presentation.pullslist.adapter.PullRequestListAdapter
+import com.sample.pulls.presentation.pullslist.adapter.PullRequestLoadStateAdapter
+import com.sample.pulls.presentation.pullslist.viewmodel.PullRequestListViewModelFactory
+import com.sample.pulls.presentation.pullslist.viewmodel.PullRequestsListViewModel
 
 class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
 
@@ -38,6 +40,7 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
     ) {
         super.onViewCreated(view, savedInstanceState)
         setupUi()
+        setupRecyclerViewAdapter()
         setupPullStateSpinner()
         observePullRequestsFetch()
     }
@@ -47,31 +50,8 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
         _binding = null
     }
 
-    private fun setupPullStateSpinner() {
-        binding.spinnerPullState.adapter = ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.pulls_state_array,
-            android.R.layout.simple_spinner_item
-        ).also { spinnerAdapter ->
-            spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
-        binding.spinnerPullState.onItemSelectedListener = stateSpinnerItemSelectedListener
-        binding.spinnerPullState.setSelection(0)
-    }
-
-    private fun setupUi() {
+    private fun setupRecyclerViewAdapter(){
         adapter = PullRequestListAdapter(this::onItemClicked)
-        binding.apply {
-            recyclerView.itemAnimator = null
-            recyclerView.adapter = adapter
-            recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
-                header = PullRequestLoadStateAdapter { adapter.retry() },
-                footer = PullRequestLoadStateAdapter { adapter.retry() }
-            )
-            buttonRetry.setOnClickListener { adapter.retry() }
-            retryGroup.setOnClickListener { adapter.retry() }
-        }
-
         adapter.addLoadStateListener { loadState ->
             binding.apply {
                 progressBar.isVisible = loadState.source.refresh is LoadState.Loading
@@ -89,6 +69,34 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
         }
     }
 
+    /**
+     * Populate spinner to select what state of pull request to load.
+     */
+    private fun setupPullStateSpinner() {
+        binding.spinnerPullState.adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.pulls_state_array,
+            android.R.layout.simple_spinner_item
+        ).also { spinnerAdapter ->
+            spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+        binding.spinnerPullState.onItemSelectedListener = stateSpinnerItemSelectedListener
+        binding.spinnerPullState.setSelection(0)
+    }
+
+    private fun setupUi() {
+        binding.apply {
+            recyclerView.itemAnimator = null
+            recyclerView.adapter = adapter
+            recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
+                header = PullRequestLoadStateAdapter { adapter.retry() },
+                footer = PullRequestLoadStateAdapter { adapter.retry() }
+            )
+            buttonRetry.setOnClickListener { adapter.retry() }
+            retryGroup.setOnClickListener { adapter.retry() }
+        }
+    }
+
     private fun observePullRequestsFetch() {
         viewModel.pullRequests.observe(viewLifecycleOwner) {
             binding.recyclerView.scrollToPosition(0)
@@ -97,7 +105,7 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
     }
 
     private fun onItemClicked(pullRequest: PullRequest) {
-        // Navigate to details.
+        // TODO Navigate to Details
     }
 
     private val stateSpinnerItemSelectedListener = object : AdapterView.OnItemSelectedListener {

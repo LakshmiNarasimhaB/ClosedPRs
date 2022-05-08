@@ -1,12 +1,13 @@
-package com.sample.pulls.presentation.pullslist
+package com.sample.pulls.presentation.pullslist.viewmodel
 
 import androidx.lifecycle.*
 import androidx.paging.cachedIn
-import com.sample.pulls.data.repositories.GithubRepository
-import com.sample.pulls.domain.model.PullRequest
-import com.sample.pulls.presentation.model.PullState
-import kotlinx.coroutines.launch
+import com.sample.pulls.domain.repositories.GithubRepository
+import com.sample.pulls.presentation.pullslist.model.PullState
 
+/**
+ * View model for PullRequestsListFragment.
+ */
 class PullRequestsListViewModel(
     private val githubRepository: GithubRepository
 ) : ViewModel() {

@@ -2,11 +2,13 @@ package com.sample.pulls
 
 import com.sample.pulls.data.mappers.PullRequestMapper
 import com.sample.pulls.data.remote.GithubApi
-import com.sample.pulls.data.repositories.GithubRepository
+import com.sample.pulls.domain.repositories.GithubRepository
 import com.sample.pulls.data.repositories.PullRequestsGithubRepository
-import com.sample.pulls.presentation.pullslist.PullRequestListViewModelFactory
-import com.sample.pulls.utils.DefaultDispatchersProvider
+import com.sample.pulls.presentation.pullslist.viewmodel.PullRequestListViewModelFactory
 
+/**
+ * Container class for app dependencies.
+ */
 class AppContainer {
 
     init {
@@ -16,7 +18,6 @@ class AppContainer {
 
     private fun createRepository(): GithubRepository {
         return PullRequestsGithubRepository(
-            DefaultDispatchersProvider(),
             PullRequestMapper(),
             GithubApi.createGitHubApi()
         )

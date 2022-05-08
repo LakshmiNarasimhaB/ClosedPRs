@@ -1,11 +1,14 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.sample.pulls.presentation.pullslist
+package com.sample.pulls.presentation.pullslist.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.sample.pulls.data.repositories.GithubRepository
+import com.sample.pulls.domain.repositories.GithubRepository
 
+/**
+ * View model factory for PullRequestListViewModel.
+ */
 object PullRequestListViewModelFactory : ViewModelProvider.Factory {
 
     private lateinit var repository: GithubRepository
