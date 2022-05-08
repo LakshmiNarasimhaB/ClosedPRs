@@ -19,7 +19,8 @@ data class PullRequest(
     val mergeCommitSha: String?,
     val head: Branch,
     val base: Branch,
-    val user: User
+    val user: User,
+    val state: String
 ) : Parcelable
 
 /**

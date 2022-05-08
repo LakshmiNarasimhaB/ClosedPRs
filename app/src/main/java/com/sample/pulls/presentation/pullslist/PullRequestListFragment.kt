@@ -40,9 +40,6 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
         setupUi()
         setupPullStateSpinner()
         observePullRequestsFetch()
-        val spannable = SpannableString("one")
-        val spannable2 = SpannableString("one")
-        val spannableBuilder = SpannableStringBuilder().append(spannable).append(spannable2)
     }
 
     override fun onDestroyView() {
@@ -71,12 +68,14 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
                 header = PullRequestLoadStateAdapter { adapter.retry() },
                 footer = PullRequestLoadStateAdapter { adapter.retry() }
             )
+            buttonRetry.setOnClickListener { adapter.retry() }
             retryGroup.setOnClickListener { adapter.retry() }
         }
 
         adapter.addLoadStateListener { loadState ->
             binding.apply {
                 progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+                spinnerPullState.isEnabled = loadState.source.refresh is LoadState.NotLoading
                 recyclerView.isVisible = loadState.source.refresh is LoadState.NotLoading
                 retryGroup.isVisible = loadState.source.refresh is LoadState.Error
 
@@ -92,6 +91,7 @@ class PullRequestListFragment : Fragment(R.layout.fragment_pull_request_list) {
 
     private fun observePullRequestsFetch() {
         viewModel.pullRequests.observe(viewLifecycleOwner) {
+            binding.recyclerView.scrollToPosition(0)
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
     }

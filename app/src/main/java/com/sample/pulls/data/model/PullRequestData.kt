@@ -24,7 +24,8 @@ data class PullRequestData(
     val mergeCommitSha: String?,
     val head: BranchData,
     val base: BranchData,
-    val user: UserData
+    val user: UserData,
+    val state: String
 ) {
     fun toDomain() = PullRequest(
         id,
@@ -33,11 +34,12 @@ data class PullRequestData(
         body,
         createdAt,
         mergedAt,
-        mergedAt,
+        closedAt,
         mergeCommitSha,
         head.toDomain(),
         base.toDomain(),
-        user.toDomain()
+        user.toDomain(),
+        state
     )
 }
 
